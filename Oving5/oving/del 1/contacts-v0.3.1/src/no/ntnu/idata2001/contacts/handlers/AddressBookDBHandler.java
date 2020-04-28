@@ -11,7 +11,8 @@ import java.util.*;
 
 public class AddressBookDBHandler implements AdressBook{
     private  EntityManagerFactory ENTITY_MANAGER_FACTORY =
-            Persistence.createEntityManagerFactory("contacts", Config.DBProperties);
+            Persistence.createEntityManagerFactory("contacts",Config.DBProperties);
+
     private  EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
 
     private ContactDetailsRepository contactDetailsRepository;
