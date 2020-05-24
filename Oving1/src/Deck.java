@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
@@ -15,10 +16,9 @@ public class Deck {
 
     private ArrayList<card> assignCards(int antall, ArrayList<card> rCards ){
         ArrayList<card> nCards = new ArrayList<>();
-        Random r = new Random();
         int tall;
         for (int i = 0; i <antall ; i++) {
-            tall = r.nextInt(52);
+            tall = new Random().nextInt(52);
             if(!nCards.contains(rCards.get(tall))){
                 nCards.add(rCards.get(tall));
             }
@@ -35,7 +35,8 @@ public class Deck {
     }
 
     private  ArrayList<String> kortFarge (ArrayList<card> rCards){
-        ArrayList<String>  farge = rCards.stream().map(c -> {
+        ArrayList<String>  farge;
+        farge = rCards.stream().map(c -> {
             if(c.getSuit() == 'H' || c.getSuit() == 'D') return "Rød"; else return "Svart";
         }).collect(Collectors.toCollection(ArrayList::new));
         return farge;
@@ -49,7 +50,7 @@ public class Deck {
        return rCards.stream().anyMatch(p -> p.getFace() == 12) && rCards.stream().anyMatch(p -> p.getSuit() == 'S');
     }
 
-    public boolean pokerFlush(ArrayList<card> rCards){
+    public boolean pokerFlush(List<card> rCards){
         if(rCards.size() == 5 ) {
             if(rCards.stream().allMatch(x -> x.getSuit() == 'S')) return true;
             if(rCards.stream().allMatch(x -> x.getSuit() == 'C')) return true;
