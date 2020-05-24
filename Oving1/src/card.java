@@ -10,16 +10,16 @@ public class card {
         this.face = face;
     }
 
-    @Override
-    public String toString() {
-        return String.format("%s%s", suit, face);
-    }
-
     public char getSuit() {
         return suit;
     }
 
     public int getFace() {
         return face;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s%s", suit, face);
     }
 }

@@ -3,7 +3,7 @@ package Øving_del_2;
 import java.time.LocalDate;
 
 public class WildAnimalFactory {
-    public WildAnimalFactory() {}
+    private WildAnimalFactory() {}
 
     public static ScandinavianWildAnimal newMaleBear(String name, LocalDate arrivalDate, LocalDate dateOfBirth, String address){
         return new MaleIndividual("bjørn", "Ursus arctos",
@@ -21,27 +21,28 @@ public class WildAnimalFactory {
 class WildAnimalFactorySingelton{
     private WildAnimalFactorySingelton(){}
 
-    public static Individual individual = null;
+    public static WildAnimalFactorySingelton instance;
 
-    public static ScandinavianWildAnimal newMaleBear(String name,  LocalDate arrivalDate, LocalDate dateOfBirth,  String address){
-        if(individual != null) {
-            return individual = new MaleIndividual("bjørn", "Ursus arctos",
-                    "Ursidae", arrivalDate, name, dateOfBirth, true, address);
+    public static WildAnimalFactorySingelton getInstance(){
+        if(instance == null) {
+            instance = new WildAnimalFactorySingelton();
         }
-        return individual;
+        return instance;
+
+    }
+
+    public static ScandinavianWildAnimal newMaleBear(String name,  LocalDate arrivalDate, LocalDate dateOfBirth,  String address) {
+        return new MaleIndividual("bjørn", "Ursus arctos",
+                "Ursidae", arrivalDate, name, dateOfBirth, true, address);
     }
     public static ScandinavianWildAnimal newFemaleWolf(String name, LocalDate arrivalDate, LocalDate dateOfBirth, String address){
-        if(individual != null) {
-            return individual = new FemaleIndividual("Ulv", "Canis lupus", "Canidae", arrivalDate,
+
+            return  new FemaleIndividual("Ulv", "Canis lupus", "Canidae", arrivalDate,
                     name, dateOfBirth, true, address, 0);
-        }
-        return individual;
     }
     public static ScandinavianWildAnimal newMaleWolf(String name,  LocalDate arrivalDate, LocalDate dateOfBirth,  String address){
-        if(individual != null) {
-            return individual = new MaleIndividual("Ulv", "Canis lupus", "Canidae", arrivalDate,
+
+            return new MaleIndividual("Ulv", "Canis lupus", "Canidae", arrivalDate,
                     name, dateOfBirth, true, address);
-        }
-        return individual;
     }
 }

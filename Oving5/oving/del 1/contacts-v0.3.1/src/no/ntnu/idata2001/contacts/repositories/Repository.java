@@ -9,7 +9,7 @@ public interface Repository <T, ID>{
 
     Optional<T> update(T entity);
 
-    List<?> findAll();
+    List<T> findAll();
 
     void delete(T entity);
 
