@@ -78,8 +78,8 @@ public class MemberArchive {
         BonusMember bm = findMember(mNr);
         if(bm != null) {
             if (bm.getPoints() >= GOLD_LIMIT && bm.findQualificationPoints(d) != 0) {
-                GoldMember gm = new GoldMember(bm.getMemberNO(), bm.getPersonals(), bm.getEnrolledDate(), bm.getPoints());
-                return gm;
+                return new GoldMember(bm.getMemberNO(), bm.getPersonals(), bm.getEnrolledDate(), bm.getPoints());
+
             }
         }
         return bm;
@@ -88,8 +88,7 @@ public class MemberArchive {
         BonusMember bm = findMember(mNr);
         if(bm !=null) {
             if (bm.getPoints() >= SILVER_LIMIT && bm.getPoints() < GOLD_LIMIT && bm.findQualificationPoints(d) != 0) {
-                SilverMember sm = new SilverMember(bm.getMemberNO(), bm.getPersonals(), bm.getEnrolledDate(), bm.getPoints());
-                return sm;
+                return new SilverMember(bm.getMemberNO(), bm.getPersonals(), bm.getEnrolledDate(), bm.getPoints());
             }
         }
         return bm;
